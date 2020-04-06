@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Microsoft Access - AuditReportWebApp" uuid="b9df5666-0072-4f3a-b0ff-48e11100e632">
+      <driver-ref>java.sql.Driver</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>net.ucanaccess.jdbc.UcanaccessDriver</jdbc-driver>
+      <jdbc-url>jdbc:ucanaccess://$PROJECT_DIR$/src/main/resources/AuditReportWebApp.accdb;newdatabaseversioV2010</jdbc-url>
+    </data-source>
+  </component>
+</project>
