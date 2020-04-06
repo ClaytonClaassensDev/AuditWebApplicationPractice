@@ -27,7 +27,7 @@ public class DatabaseCRUD {
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getEmail());
 
-            addUserToStudentLoginVerificationTable(user.getStudentNumber(), user.getPassword());
+            //addUserToStudentLoginVerificationTable(user.getStudentNumber(), user.getPassword());
 
             int row = preparedStatement.executeUpdate();
 
