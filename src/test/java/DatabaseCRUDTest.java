@@ -1,4 +1,6 @@
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,24 +17,24 @@ public class DatabaseCRUDTest {
     String expected_password = "thisIsTheTestingPassword!@#$%";
     String expected_email = "987654321@testEmail.com";
 
-    User user = new User(expected_studentNumber, expected_password, expected_email);
+    Student student = new Student(expected_studentNumber, expected_password, expected_email);
 
 
-    @org.junit.Before
+    @Before
     public void setUp() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void addUserToStudentRecordsTableTest() {
 
-        User returnedUser = null;
+        Student studentReturned = null;
 
         try(Connection connection = DriverManager.getConnection(databaseURL)){
 
-            databaseCRUD.addUserToStudentRecordsTable(user);
+            databaseCRUD.addUserToStudentRecordsTable(student);
 
-            String sql = "SELECT StudentNumber, Password, Email FROM StudentRecordsTable WHERE StudentNumber = "+user.getStudentNumber()+"";
+            String sql = "SELECT StudentNumber, Password, Email FROM StudentRecordsTable WHERE StudentNumber = "+student.getStudentNumber()+"";
 
             Statement statement = connection.createStatement();
 
@@ -49,11 +51,11 @@ public class DatabaseCRUDTest {
                 passwordReturned = resultSet.getString("Password");
                 emailReturned = resultSet.getString("Email");
 
-                returnedUser = new User(studentNumberReturned, passwordReturned, emailReturned);
+                studentReturned = new Student(studentNumberReturned, passwordReturned, emailReturned);
 
             }
 
-            Assert.assertEquals(user.getStudentNumber(), returnedUser.getStudentNumber());
+            Assert.assertEquals(student.getStudentNumber(), studentReturned.getStudentNumber());
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,7 +63,7 @@ public class DatabaseCRUDTest {
 
     }
 
-    @org.junit.Test
+    @Test
     public void addUserToStudentLoginVerificationTableTest() {
 
         DatabaseCRUD databaseCRUD = new DatabaseCRUD();
@@ -94,18 +96,18 @@ public class DatabaseCRUDTest {
 
     }
 
-    @org.junit.Test
+    @Test
     public void deleteUserFromStudentRecordsTableTest() {
 
         DatabaseCRUD databaseCRUD = new DatabaseCRUD();
 
-        User returnedUser = null;
+        Student studentReturned = null;
 
-        ArrayList<User> userList = new ArrayList<>();
+        ArrayList<Student> userList = new ArrayList<>();
 
         try(Connection connection = DriverManager.getConnection(databaseURL)){
 
-            databaseCRUD.deleteUserFromStudentRecordsTable(user.getStudentNumber());
+            databaseCRUD.deleteUserFromStudentRecordsTable(student.getStudentNumber());
 
             String sql = "Select * from StudentRecordsTable";
 
@@ -118,14 +120,14 @@ public class DatabaseCRUDTest {
                 String returnedPassword = resultSet.getString(2);
                 String returnedEmail = resultSet.getString(3);
 
-                returnedUser = new User(returnedStudentNumber, returnedPassword, returnedEmail);
+                studentReturned = new Student(returnedStudentNumber, returnedPassword, returnedEmail);
 
-                userList.add(returnedUser);
+                userList.add(studentReturned);
             }
 
             boolean result = false;
 
-            if(userList.contains(user)){
+            if(userList.contains(student)){
                 result = true;
             }
 
@@ -136,18 +138,18 @@ public class DatabaseCRUDTest {
         }
     }
 
-    @org.junit.Test
+    @Test
     public void deleteUserFromStudentLoginVerificationTableTest() {
 
         DatabaseCRUD databaseCRUD = new DatabaseCRUD();
 
-        User returnedUser = null;
+        Student studentReturned = null;
 
         ArrayList userList = new ArrayList<>();
 
         try(Connection connection = DriverManager.getConnection(databaseURL)){
 
-            databaseCRUD.deleteUserFromStudentLoginVerificationTable(user.getStudentNumber());
+            databaseCRUD.deleteUserFromStudentLoginVerificationTable(student.getStudentNumber());
 
             String sql = "Select * from StudentLoginVerificationTable";
 
@@ -164,7 +166,7 @@ public class DatabaseCRUDTest {
 
             boolean result = false;
 
-            if(userList.contains(user.getStudentNumber())){
+            if(userList.contains(student.getStudentNumber())){
                 result = true;
             }
 
@@ -176,11 +178,11 @@ public class DatabaseCRUDTest {
 
     }
 
-    @org.junit.Test
+    @Test
     public void searchUserInStudentRecordsTable() {
     }
 
-    @org.junit.Test
+    @Test
     public void displayAllStudents() {
     }
 }

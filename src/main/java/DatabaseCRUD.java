@@ -7,7 +7,7 @@ public class DatabaseCRUD {
 
     String databaseURL = "jdbc:ucanaccess://C://Users//Clayton Claassens//Documents//CPUT IT//3rd Year//Application Development Practice 3//AuditReportWebApplication//src//main//resources//AuditReportWebApp.accdb";
 
-    User user;
+    Student student;
 
     public DatabaseCRUD(){
 
@@ -16,16 +16,16 @@ public class DatabaseCRUD {
     }
 
 
-    public void addUserToStudentRecordsTable(User user){
+    public void addUserToStudentRecordsTable(Student student){
 
         try (Connection connection = DriverManager.getConnection(databaseURL)) {
 
             String sql = "insert into StudentRecordsTable(StudentNumber, Password, Email) values(?, ?, ?)";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, user.getStudentNumber());
-            preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setInt(1, student.getStudentNumber());
+            preparedStatement.setString(2, student.getPassword());
+            preparedStatement.setString(3, student.getEmail());
 
             //addUserToStudentLoginVerificationTable(user.getStudentNumber(), user.getPassword());
 
