@@ -1,0 +1,58 @@
+*{margin: 0; padding:0}
+
+body {
+    background-color: #f5683d;
+    padding-top: 100px;
+}
+
+.sign-up-form {
+    font-weight: bold;
+    width: 500px;
+    height: auto;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 #000000;
+    margin: auto;
+    position: relative;
+}
+
+
+ul.list {
+    List-style-type: none;
+    padding-left: 0px ;
+
+}
+
+ul.list li {
+
+    padding-top: 10px;
+
+}
+
+.terms-message{
+    text-align: center;
+    padding-top: 30px;
+    font-weight: bold;
+}
+
+.heading-message{
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-weight: bold;
+
+}
+
+.form{
+    text-align: left;
+    border-style: solid;
+    padding-left: 150px;
+    padding-right: 150px;
+    background-color: orange;
+}
+
+.ul li button:hover {
+
+background: pink;
+}
