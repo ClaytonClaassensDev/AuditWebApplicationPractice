@@ -1,0 +1,7 @@
+com\auditreport\Model\StudentInfoReturn.class
+com\auditreport\Model\Ticket.class
+com\auditreport\Controller\Student_Registration_Controller.class
+com\auditreport\Application.class
+com\auditreport\Model\Lecturer.class
+com\auditreport\Services\RegistrationRepository.class
+com\auditreport\Model\Student.class
